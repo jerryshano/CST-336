@@ -37,7 +37,7 @@
                     {
                         if (userGuess > 99 || userGuess < 1)
                         {
-                            $("#lowOrHi").text("Last guess was out of range, try again.");
+                            $("#lowOrHi").text("Last guess was not acceptable.");
                         }
                     
                         else
