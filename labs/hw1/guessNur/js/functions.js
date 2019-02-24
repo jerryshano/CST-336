@@ -33,7 +33,7 @@
                 
                 
                 
-                    if(Math.floor(userGuess) == userGuess && $.isNumeric(userGuess)) 
+                    if(Math.floor(userGuess) == userGuess && $.isNumeric(userGuess)) // jquery
                     {
                         if (userGuess > 99 || userGuess < 1)
                         {
