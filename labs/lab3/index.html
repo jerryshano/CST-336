@@ -55,7 +55,7 @@
         <h4 id="congrats"></h4>
         <h2 id = "total"></h2>
         <button id="submitButton"> Submit </button>
-        <h2 id="validSubmission"></h2>
+        <!--<h2 id="validSubmission"></h2>-->
         <h2 id = "totalTimes"></h2>
         <h3 id="prevScores"></h3>
     </body>
@@ -90,7 +90,7 @@
             let isValid = true;
             if ($("#q2").val() == "") {
                 isValid = false;
-                $("#validSubmission").html("Question 1 not answered");
+               // $("#validSubmission").html("Question 1 not answered");
             }
             return isValid;
         }
@@ -168,7 +168,7 @@
             } else {
                 $("#q5_feedback").html("Incorrect");
                  $("#markImg4").html("<img src ='img/xmark.png' alt='xmark'>");
-                 $("#q4_feedback").attr("class", "incorrect");
+                 $("#q5_feedback").attr("class", "incorrect");
             }
             //congrats
             if (total_points==100){
