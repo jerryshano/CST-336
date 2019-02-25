@@ -15,10 +15,10 @@ $("#q1,#q2,#q3,#shipping-select").change(function(){
     let shipping = $("#shipping-select").val();
     if (shipping != "0"){
         $("#error").text("");
+        shipping = parseInt(shipping);
+        $("#shipping").text("$"+shipping.toFixed(2));
+        total += shipping;
     }
-    shipping = parseInt(shipping);
-    $("#shipping").text("$"+shipping.toFixed(2));
-    total += shipping;
     
     $("#subtotal").text("$" + total.toFixed(2));
     $("#tax").text("$" + (total/10).toFixed(2));
