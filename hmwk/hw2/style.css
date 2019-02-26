@@ -1,0 +1,38 @@
+body{
+    margin: auto;
+    text-align: center;
+    background-color: #292f3a;
+    color:coral;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.correct {
+    color: green !important;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.incorrect{
+    color: red !important;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+#submitButton:hover {
+    opacity: 1
+}
+
+#submitButton{
+    
+    font-size: 20px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    background-color:#bec1c6;
+    color:#2b2d30;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+#answer{
+    border-color: coral !important;
+}

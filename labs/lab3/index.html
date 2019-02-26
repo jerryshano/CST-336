@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
     <head>
         <title> US Geography Quiz </title>
@@ -12,12 +13,9 @@
         <h1>US Geography Quiz</h1>
         </div>
         <!--question1-->
-        <h2><span id="markImg1"></span>What is the capital of California?</h2>
-        
+        <h2><span id="markImg1"></span>What is the capital of California?</h2>       
         <input type = "text" id="q1">
-        <div id="q1_feedback">
-                       
-        </div>
+        <div id="q1_feedback"></div>
         <!--question2-->
         <h2><span id="markImg2"></span>What is the longest river?</h2>
         <select id="q2">
@@ -81,16 +79,14 @@
         
         $(".active").on( "click", function() {
              $(".active").css("background","");
-             $(this).css("background","#eaa544");
-             //alert($(this).attr("id"));
+             $(this).css("background","#eaa544");             
              q5_response = $(this).attr("id");
         });
         
         function isFormValid(){
             let isValid = true;
             if ($("#q2").val() == "") {
-                isValid = false;
-               // $("#validSubmission").html("Question 1 not answered");
+                isValid = false;               
             }
             return isValid;
         }

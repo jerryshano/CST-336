@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--hmwk2-->
+<html>
+    <head>
+        <title>Style Test</title>
+        <title> US Geography Quiz </title>
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+        crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+    <div class="jumbotron">
+        <h1>Style Test</h1>
+        </div>        
+        <!--question1-->
+        <h2><span id="markImg1"></span>Do you like motorclyes?</h2>
+        <input type ="text" id="q1">
+        <div id="q1_feedback"></div>
+        <br></br>    
+        <!--qustion2-->
+        <h2><span id="markImg2"></span>What kind of music do you like?</h2>
+        <input type="checkbox" name="q2" id="Electronic"><label for="Electronic">Electronic</label>
+        <input type="checkbox" name="q2" id="Metal"><label for="Metal">The Metal</label>
+        <input type="checkbox" name="q2" id="Rap"><label for ="Rap">Gangsta Rap</label>
+        <input type="checkbox" name="q2" id="Amish"><label for ="Amish">Amish</label>
+        <div id = "q2_feedback"></div>
+        <br></br>
+        <!--question3-->
+        <h2><span id="markImg3"></span>What is your preffered haircut?</h2>
+        <input type="radio" name="q3" id="under" value="under cut"><label for="under">under cut</label>
+        <input type="radio" name="q3" id="racoon" value="the dead racoon"><label for="racoon">the dead racoon</label>
+        <input type="radio" name="q3" id="over" value="comb over"><label for="over">comb over</label>
+        <input type="radio" name="q3" id="pomp" value="the pomp"><label for="pomp">the pomp</label>
+        <div id ="q3_feedback"></div>
+        <br></br>
+        <!--question4-->
+        <h2><span id="markImg4"></span>Favorite dance move?</h2>
+        <select id="q4">
+            <option value="">Select One</option>
+            <option>cabbage patch</option>
+            <option>the robot</option>
+            <option>moonwalk</option>
+            <option>running man</option>
+        </select>
+        <div id="q4_feedback"></div>
+        <br><br>
+        <!--question5-->
+        <h2><span id="markImg5"></span>Pants style</h2>
+        <p>(please select more than one option)<p/>
+        <select name="cars" size="4" multiple>
+            <option id ="saggin" value="saggin">saggin</option>
+            <option id ="waters" value="high waters">high waters</option>
+            <option id ="GQ" value="GQ">GQ</option>
+            <option id ="Fitted"value="Fitted">Fitted</option>
+        </select>
+        <div id="q5_feedback"></div>
+        
+        <!--<input type="submit">-->
+        <p><em>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</em></p>   
+        <br>
+        
+        <div id="answer"></div>
+        <button id="submitButton">Submit Form</button>
+        <h4 id="congrats"></h4>
+    </body>
+    
+        <script>
+        
+            let q1_value = 20;
+            let q2_value = 20;
+            let q3_value = 20;
+            let q4_value = 20;
+            let q5_value = 20;
+                       
+            let q1_answer = "yes";
+            let q2_answer = "Electronic" + "The Metal";
+            let q3_answer = "under cut";
+            let q4_answer1 = "running man";
+            let q4_answer2 = "the robot";
+            let q5_answer = "GQ" + "Fitted";
+            
+        function isFormValid(){
+            let isValid = true;
+            if ($("#q1").val() == "") {
+                isValid = false;               
+            }
+            return isValid;
+        }
+            
+        $("#submitButton").on( "click", function() {
+            
+            if (!isFormValid()){
+                $("#answer").html("you need to answer question 1");
+                return;
+            }else {
+                $("#answer").text("");
+            }
+            
+           // alert("goda");
+                
+            let total_points = 0;
+                
+            let q1_response = $("#q1").val().toLowerCase();
+            let q3_response = $("input[name=q3]:checked").val();
+            let q4_response = $("#q4").val();
+            let q5_response = $("#q5").val();
+            
+            
+            
+            //Question 1
+            if(q1_response == q1_answer) {
+                $("#q1_feedback").html("Correct!");
+                total_points += q1_value;
+                $("#markImg1").html("<img src ='img/checkmark.png' alt='checkmark'>");                
+                $("#q1_feedback").attr("class", "correct");
+            }else {
+                $("#q1_feedback").html("Incorrect!");
+                $("#markImg1").html("<img src ='img/xmark.png' alt='xmark'>");
+                $("#q1_feedback").attr("class", "incorrect");
+            } 
+            //Question 2
+            if ($("#Electronic").is(":checked") && $("#Metal").is(":checked") && !$("#Amish").is(":checked") && !$("#Rap").is(":checked") ) {
+                $("#q2_feedback").html("Correct!");
+                total_points += q2_value;
+                $("#markImg2").html("<img src ='img/checkmark.png' alt='checkmark'>");               
+                $("#q2_feedback").attr("class", "correct");
+            }
+            else {
+                $("#q2_feedback").html("Incorrect!");
+                $("#markImg2").html("<img src ='img/xmark.png' alt='xmark'>");
+                $("#q2_feedback").attr("class", "incorrect");
+            }
+            //Question 3
+            if (q3_response == q3_answer) {
+                $("#q3_feedback").html("Correct!");
+                total_points += q3_value;
+                $("#markImg3").html("<img src ='img/checkmark.png' alt='checkmark'>");
+                $("#q3_feedback").attr("class", "correct");
+            }
+            else {
+                $("#q3_feedback").html("Incorrect!");
+                $("#markImg3").html("<img src ='img/xmark.png' alt='xmark'>");
+                $("#q3_feedback").attr("class", "incorrect");
+            }
+            //Question 4
+            if (q4_response == q4_answer1 || q4_response == q4_answer2) {
+                $("#q4_feedback").html("Correct!");
+                total_points += q4_value;
+                $("#markImg4").html("<img src ='img/checkmark.png' alt='checkmark'>");               
+                $("#q4_feedback").attr("class", "correct");
+            }
+            else {
+                $("#q4_feedback").html("Incorrect!");
+                $("#markImg4").html("<img src ='img/xmark.png' alt='xmark'>");
+                $("#q4_feedback").attr("class", "incorrect");
+            }
+            //Question 5
+            if ($("#Fitted").is(":selected") && $("#GQ").is(":selected") && !$("#saggin").is(":selected") && !$("#waters").is(":selected")) {
+                $("#q5_feedback").html("Correct!");
+                total_points += q4_value;
+                $("#markImg5").html("<img src ='img/checkmark.png' alt='checkmark'>");               
+                $("#q5_feedback").attr("class", "correct");
+            }
+            else {
+                $("#q5_feedback").html("Incorrect!");
+                $("#markImg5").html("<img src ='img/xmark.png' alt='xmark'>");
+                $("#q5_feedback").attr("class", "incorrect");
+            }
+            //congrats message
+            if (total_points==100){
+                $("#congrats").html("you got mad style :)");   
+            }else if (total_points==80 || total_points==60 || total_points==40 || total_points==20){
+                $("#congrats").html("your syle is hurt"); 
+            }else{ 
+                $("#congrats").html("im callin the style po po");
+            }
+                
+});
+            
+        </script>
+
+<footer>
+    <img src="img/buddy.png"></img>
+</footer>
+
+</html>
