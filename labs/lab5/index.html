@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+    </head>
+    
+    
+    
+    <body>
+    
+    <fieldset>
+        <legend>
+            sign up
+        </legend>
+        
+        First name
+        <input type="text" id="fName"/>
+        <br>
+        
+        Last name
+        <input type="text" id="lName"/>
+        <br>
+        
+        Username:
+        <input type="text" id="uName"/>
+        <div id="error"></div>
+        <br> 
+        
+        Username:
+        <input type="text" id="yoName"/>
+        <div id="daError"></div>
+        <br> 
+        
+        Password 
+        <input type="password" id="pwd"/>
+        <div id="suggest"></div>
+        
+        <button>Submit</button>
+        
+        
+    
+    </fieldset>
+    
+        <script>
+        
+        
+        
+          $("#uName").change(function(){
+               $.ajax({
+    
+                    type: "GET",
+                    url: "checkUsername_text.php",
+                    // dataType: "",
+                    data: { "username": $("#uName").val() },
+                    success: function(data,status) {
+                    //alert(data);
+                        $("#error").html(data);
+                    },
+                    complete: function(data,status) { //optional, used for debugging purposes
+                    //alert(status);
+                    }
+    
+                });//ajax
+              
+              });//change
+              
+               $("#yoName").change(function(){
+               $.ajax({
+    
+                    type: "GET",
+                    url: "checkUsername_json.php",
+                    dataType: "json",
+                    data: { "username": $("#yoName").val() },
+                    success: function(data,status) {
+                    //alert(data);
+                        if (data.available == false){
+                            $("#daError").html("not good to go");
+                        }else{
+                            $("#daError").html("good to go");
+                        }
+                    },
+                    complete: function(data,status) { //optional, used for debugging purposes
+                    //alert(status);
+                    }
+    
+                });//ajax
+              
+              });//change
+              
+              $("#pwd").change(function(){
+               $.ajax({
+    
+                    type: "GET",
+                    url: "validatePwd.php",
+                    dataType: "json",
+                    data: { "username": $("#uName").val(), 
+                            "pass": $("#pwd").val()
+                    },
+                    success: function(data,status) {
+                    //alert(data);
+                        if (data.valid === false){
+                            $("#suggest").html("not good to go");
+                        }else{
+                            $("#suggest").html("good to go");
+                        }
+                    },
+                    complete: function(data,status) { //optional, used for debugging purposes
+                    //alert(status);
+                    }
+    
+                });//ajax
+              
+              });//change
+        
+        </script>
+
+    </body>
+</html>
