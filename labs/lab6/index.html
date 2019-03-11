@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+    
+    <script>
+        
+        $.ajax({
+            type: "GET",
+            url: "api/getProducts.php",
+            dataType: "json",
+            // data: { "": },
+            success: function(data,status) {
+            //alert(data);
+           for (i=0; i<data.length; i++){
+            $("#products").append(data[i].productName + "<br>");  
+           }
+           
+           
+            },
+            complete: function(data,status) { //optional, used for debugging purposes
+            //alert(status);
+}
+});
+    
+    </script>
+    <div id="products"></div>
+    </body>
+</html>
