@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <link href="css/styles.css" rel="stylesheet" type='text/css'>   
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
+        <title>quiz hm3</title>
+    </head>
+    <body>   
+    <h3>quiz homework 3</h3><br>
+    
+    
+    <div id="questionOne" class="font"></div>
+    <input type="text" id="question1">   
+    <input type="submit" id="start">
+    <div id="good"></div>
+    
+    <br><br>
+    
+    <div id="questionTwo" class="font"></div>
+    <input type="text" id="question2">
+    <input type="submit" id="end">
+    <div id="message"></div>
+    
+    <script>
+    
+    $.ajax({
+        type: "GET",
+        url: "api/firstQ.php",
+        dataType: "json",           
+        success: function(data,status) {
+        //alert(data);
+        $("#questionOne").html(data.question);
+        
+        },
+        complete: function(data,status) { //optional, used for debugging purposes
+        //alert(status);
+        }
+    });//ajax
+
+    $("#start").on("click", function() {
+        $.ajax({
+            type: "GET",
+            url: "api/firstQ.php",
+            dataType: "json",               
+            success: function(data,status){ 
+            if ($("#question1").val() === data.answer){
+                $("#good").html("Correct!");
+                $("#good").css("color","green");
+            }//if
+            else{
+                $("#good").html("Incorrect!");
+                $("#good").css("color","red");
+            }//else
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                //alert(status);
+                }
+        });//ajax       
+    });//end event
+        
+    $("#start").on("click", function() {
+        $.ajax({
+            type: "GET",
+            url: "api/secondQ.php",
+            dataType: "json",
+            success: function(data,status) {
+            //alert(data);
+            $("#questionTwo").html(data.question);           
+            },
+            complete: function(data,status) { //optional, used for debugging purposes
+            //alert(status);
+            }
+        });//ajax   
+    });//end event
+    
+    $("#end").on("click", function() {           
+        $.ajax({
+            type: "GET",
+            url: "api/secondQ.php",
+            dataType: "json",
+            success: function(data,status) {
+            //alert("data");
+            if ($("#question2").val() === data.answer){
+                $("#message").html("Correct!");
+                $("#message").css("color","green");
+            }//if
+            else{
+                $("#message").html("Incorrect!");
+                $("#message").css("color","red");
+            }//else
+            },
+            complete: function(data,status) { //optional, used for debugging purposes
+            //alert(status);
+            }
+        });//ajax
+    });//end event 
+    
+    </script>
+
+    </body>
+</html>
