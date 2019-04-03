@@ -25,6 +25,9 @@
     
     <script>
     
+    var firstQuestionAnswer;
+    var secondQuestionAnswer;
+    
     $.ajax({
         type: "GET",
         url: "api/firstQ.php",
@@ -32,15 +35,22 @@
         success: function(data,status) {
         //alert(data);
         $("#questionOne").html(data.question);
-        
+        firstQuestionAnswer = data.answer;
         },
         complete: function(data,status) { //optional, used for debugging purposes
         //alert(status);
         }
     });//ajax
 
-    $("#start").on("click", function() {
-        $.ajax({
+    $("#start").on("click", function(){        
+        if ($("#question1").val() === firstQuestionAnswer){
+                $("#good").html("Correct!");
+                $("#good").css("color","green");
+            }else{
+                $("#good").html("Incorrect!");
+                $("#good").css("color","red");
+            }//else
+        /*$.ajax({
             type: "GET",
             url: "api/firstQ.php",
             dataType: "json",               
@@ -57,7 +67,7 @@
                 complete: function(data,status) { //optional, used for debugging purposes
                 //alert(status);
                 }
-        });//ajax       
+        });//ajax  */     
     });//end event
         
     $("#start").on("click", function() {
@@ -66,8 +76,8 @@
             url: "api/secondQ.php",
             dataType: "json",
             success: function(data,status) {
-            //alert(data);
-            $("#questionTwo").html(data.question);           
+            $("#questionTwo").html(data.question); 
+            secondQuestionAnswer = data.answer;
             },
             complete: function(data,status) { //optional, used for debugging purposes
             //alert(status);
@@ -75,14 +85,9 @@
         });//ajax   
     });//end event
     
-    $("#end").on("click", function() {           
-        $.ajax({
-            type: "GET",
-            url: "api/secondQ.php",
-            dataType: "json",
-            success: function(data,status) {
-            //alert("data");
-            if ($("#question2").val() === data.answer){
+    $("#end").on("click", function() {     
+        // alert('data');
+        if ($("#question2").val() === secondQuestionAnswer){
                 $("#message").html("Correct!");
                 $("#message").css("color","green");
             }//if
@@ -90,11 +95,6 @@
                 $("#message").html("Incorrect!");
                 $("#message").css("color","red");
             }//else
-            },
-            complete: function(data,status) { //optional, used for debugging purposes
-            //alert(status);
-            }
-        });//ajax
     });//end event 
     
     </script>
