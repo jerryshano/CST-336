@@ -2,8 +2,8 @@
 
 $host = "localhost"; 
 $databasename = "ottermart";
-$username "root";
-$password "";
+$username = "root";
+$password = "";
 
 // Establishing a connection
 $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
