@@ -1,14 +1,7 @@
 <?php
 
-$host = "localhost"; 
-$databasename = "ottermart";
-$username = "root";
-$password = "";
-
-// Establishing a connection
-$dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-// Setting Errorhandling to Exception
-$dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+ include 'dbConnection.php';
+  $conn = getDatabaseConnection("ottermart");
 
 $sql = "SELECT * FROM om_product ORDER BY productPrice LIMIT 10";
 $stmt = $dbConn -> prepare($sql);  //$connection MUST be previously initialized
