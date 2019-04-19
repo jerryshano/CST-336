@@ -6,12 +6,12 @@ function getDatabaseConnection($dbname = 'ottermart'){
  $username = 'root';
  $password = '';
  
-  $host = 'us-cdbr-iron-east-03.cleardb.net';//heroku
- $username = 'ba5d33ca94d16d';
- $password = '90b25549';
- $dbname = 'heroku_100f8b3422c234d';
- //creates data base connection
- $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+//  $host = 'us-cdbr-iron-east-03.cleardb.net';//heroku
+//  $username = 'ba5d33ca94d16d';
+//  $password = '90b25549';
+//  $dbname = 'heroku_100f8b3422c234d';
+//  //creates data base connection
+//  $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
  
   //when connecting from Heroku
     if  (strpos($_SERVER['HTTP_HOST'], 'herokuapp') !== false) {
