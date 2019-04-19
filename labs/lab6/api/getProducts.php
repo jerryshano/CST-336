@@ -4,7 +4,7 @@
   $conn = getDatabaseConnection("ottermart");
 
 $sql = "SELECT * FROM om_product ORDER BY productPrice LIMIT 10";
-$stmt = $dbConn -> prepare($sql);  //$connection MUST be previously initialized
+$stmt = $conn -> prepare($sql);  //$connection MUST be previously initialized
 $stmt->execute();
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC); //use fetch for one record, fetchAll for multiple
 
