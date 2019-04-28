@@ -2,9 +2,23 @@
 <html>
     <head>
         <title>Favorite Pictures</title>
-        
+                <link rel="stylesheet" href="css/styles.css" />
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--<script src="js/favorites.js"></script>-->
+<style>
+body {
+text-align: center;
+}
+img {
+    border-radius: 20px;
+    padding:15px;
+}
+.favorite{
+    cursor: pointer;
+}
+</style>
+        
         
          <script>
          
@@ -26,7 +40,7 @@
                         data.forEach(function(i)
                         {
                         
-                            $("#images").append(`<div class='img' style='width:100px;height:100px;background-size: 
+                            $("#images").append(`<div class='img' style='width:200px;height:200px;background-size: 
                             cover;background-image: url("${i.imageURL}");'></div>`);
                         });//forech
                     }
@@ -60,8 +74,9 @@
     <body>
     <h1>Favorite Pictures</h1>
     
-    <div id="images"></div>
     <div id="keywrd"></div>
+    <div id="images"></div>
+    
     
    
 
