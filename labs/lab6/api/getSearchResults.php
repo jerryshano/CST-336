@@ -1,8 +1,7 @@
 <?php
 
     include 'dbConnection.php';    
-    $conn = getDatabaseConnection("ottermart");
-    
+    $conn = getDatabaseConnection("ottermart");   
     $namedParameters = array();
     $sql = "SELECT * FROM om_product WHERE 1";
     
@@ -34,11 +33,8 @@
     else if ($_GET['orderBy'] == "name"){
         $sql .= " ORDER BY productName";
     }
-   // echo $sql;
-    //echo "\n";
-    //print_r($_GET);
+   
     $stmt = $conn->prepare($sql);
-    // $stmt = $dbConn -> prepare($namedParameters);  //$connection MUST be previously initialized
     $stmt->execute($namedParameters);
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC); //use fetch for one record, fetchAll for multiple
     echo json_encode($records);

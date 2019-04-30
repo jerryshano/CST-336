@@ -1,7 +1,7 @@
 <?php
 
- include 'dbConnection.php';
-  $conn = getDatabaseConnection("ottermart");
+include 'dbConnection.php';
+$conn = getDatabaseConnection("ottermart");
 
 $sql = "SELECT * FROM om_product ORDER BY productPrice LIMIT 10";
 $stmt = $conn -> prepare($sql);  //$connection MUST be previously initialized
